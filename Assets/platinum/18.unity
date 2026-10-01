@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 8692698624727056372}
+  _sharpness: 7
 --- !u!1 &555078382
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,6 +488,10 @@ PrefabInstance:
     - target: {fileID: 5193177126551317465, guid: 78c0bd82f1e1daf47b80cee7a2da9cc6, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 5193177126551317465, guid: 78c0bd82f1e1daf47b80cee7a2da9cc6, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9144686312947516081, guid: 78c0bd82f1e1daf47b80cee7a2da9cc6, type: 3}
       propertyPath: m_Name
