@@ -55,7 +55,7 @@ public class UI : MonoBehaviour
 
     void MonsterSlider()
     {
-        if(_monster.IsDestroyed())
+        if(_monster == null)
         {
             return;
         }
@@ -65,6 +65,10 @@ public class UI : MonoBehaviour
     }
     void PlayerSlider()
     {
+        if(_player == null)
+        {
+            return;
+        }
         _sliderPlayer.value = (float)_player.HP / _player.HPMax;
     }
 }

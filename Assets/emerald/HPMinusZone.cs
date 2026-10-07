@@ -14,8 +14,7 @@ public class HPMinusZone : MonoBehaviour
     int damage = 1;
 
      List<Unit> _unit = new List<Unit>(10);
-
-    bool a = true;
+     
     private void OnTriggerEnter(Collider other)
     {
         Unit Unit = other.GetComponent<Unit>();
