@@ -185,6 +185,8 @@ public class Player : Unit
 
         Quaternion rotateTarget = transform.rotation * Quaternion.AngleAxis(inputMouse * _angleSpeed, Vector3.up);
         _rb.MoveRotation(rotateTarget);
+
+        transform.rotation = rotateTarget;
     }
 
     void IsGround()

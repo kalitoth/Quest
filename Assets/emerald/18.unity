@@ -8269,7 +8269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3994000305167351894, guid: 78c0bd82f1e1daf47b80cee7a2da9cc6, type: 3}
       propertyPath: _angleSpeed
-      value: 4.5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 67999635119827222, guid: 78c0bd82f1e1daf47b80cee7a2da9cc6, type: 3}
       propertyPath: m_LocalPosition.x
