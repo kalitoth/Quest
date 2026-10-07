@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Player_18 : MonoBehaviour
+public class Player : Unit
 {
     Animator _animator;
     Rigidbody _rb;
@@ -25,9 +26,19 @@ public class Player_18 : MonoBehaviour
 
     string _moveParam = "IMove";
 
+    [Header("╬Нец")]
+    string _attackTrigger = "TAttack";
+    float _attackInterval = 1f;
+    float _time;
+   [SerializeField]
+   GameObject _weapon;
+    GameObject _attack;
+
+    Vector3 _playerFirstPosition;
+    public Vector3 PlayerFirstPosition => _playerFirstPosition;
     State _state = State.None;
-      
-    enum State
+
+     enum State
     { 
         None,
         Walk, 
@@ -39,13 +50,19 @@ public class Player_18 : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         _layer = 1 << LayerMask.NameToLayer(_groundTag);
+
+        _playerFirstPosition = transform.position;
+       HP = HPMax;
     }
 
     void Update()
-    { 
+    {
+       
         Walk();
         IsGround();
         MoveAnimator();
+        Attack();
+        Die();
     }
     private void FixedUpdate()
     {
@@ -54,6 +71,36 @@ public class Player_18 : MonoBehaviour
         jump();
     }
 
+    
+    void Attack()
+    {
+        
+        _time += Time.deltaTime;
+
+        
+        if (_time <= _attackInterval)
+        {
+            return;
+        }
+
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            _animator.SetTrigger(_attackTrigger);
+             
+            
+            _attack = Instantiate(_weapon,transform.position+ transform.forward + transform.up*0.8f  , transform.rotation);
+
+            Destroy(_attack.gameObject,0.1f);  
+
+            _time = 0;
+
+        }
+
+       
+    }
+   
+    
     void Walk()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
