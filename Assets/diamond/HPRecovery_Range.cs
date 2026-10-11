@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class HPRecovery : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class HPRecovery : MonoBehaviour
 
             if(Input.GetKeyDown(KeyCode.E))
             {
-                _player.TakeHeal(heal);
+                HealingPotion.instance._potionAction.Invoke();
                 Destroy(transform.parent.gameObject);
             }
         }

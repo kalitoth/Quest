@@ -45,8 +45,8 @@ public class HPMinusZone : MonoBehaviour
             {
                 _unit.RemoveAt(i);
             }
-        }
-        Debug.Log(_unit.Count);
+        } 
+
         _time += Time.deltaTime;
 
         if (_time < _interval)

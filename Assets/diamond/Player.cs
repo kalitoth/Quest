@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player : Unit
 {
@@ -75,6 +76,7 @@ public class Player : Unit
     void Attack()
     {
         
+
         _time += Time.deltaTime;
 
         
@@ -83,6 +85,10 @@ public class Player : Unit
             return;
         }
 
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
