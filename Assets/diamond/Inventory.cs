@@ -10,30 +10,10 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    public static Inventory instance;
-
+    
     [SerializeField]
     GameObject _inventory;
-
-    private void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(this);
-        }
-
-        instance = this;
-
-    }
-
-    private void OnDestroy()
-    {
-        if(instance == this)
-        {
-            instance = null;
-        }
-    }
-
+     
     private void Update()
     {
         playerInventory(); 

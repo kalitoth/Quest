@@ -20,10 +20,13 @@ public class Potion<T> : MonoBehaviour
     Button _activeButton;
 
     Button _potionButton;
-    TextMeshProUGUI _potionText;
+    TextMeshProUGUI _potionNumText;
 
     public int _potionNum;
     bool _selectButton;
+
+    protected int _potionAmount;
+    protected string _potionName;
      
     public Action _potionAction;
 
@@ -36,7 +39,9 @@ public class Potion<T> : MonoBehaviour
             Destroy(this);
         }
 
-        instance = this; 
+        instance = this;
+
+        _potionAction += GetPotion;
     }
 
     private void OnDestroy()
@@ -46,10 +51,7 @@ public class Potion<T> : MonoBehaviour
             instance = null;
         }
     }
-    void Start()
-    {
-        _potionAction += GetPotion;
-    }
+     
      
     void GetPotion()
     {
@@ -60,8 +62,8 @@ public class Potion<T> : MonoBehaviour
             _potionButton = Instantiate(_itemButton, _item.transform);
             Image _buttonImage = _potionButton.GetComponent<Image>();
             TextMeshProUGUI[] text = _potionButton.GetComponentsInChildren<TextMeshProUGUI>();
-            text[0].text = "Potion";
-            _potionText = text[1];
+            text[0].text = _potionName;
+            _potionNumText = text[1];
 
             _potionButton.onClick.AddListener(() =>
             {
@@ -78,7 +80,7 @@ public class Potion<T> : MonoBehaviour
             return;
         }
 
-        _potionText.text = $"{_potionNum}";
+        _potionNumText.text = $"{_potionNum}";
 
         if (!_potionButton.IsActive())
         {
@@ -119,11 +121,11 @@ public class Potion<T> : MonoBehaviour
             return;
         }
 
-        int heal = 1;
+        
         _potionNum--;
-        _player.TakeHeal(heal);
+        _player.TakeHeal(_potionAmount);
 
-        _potionText.text = $"{_potionNum}";
+        _potionNumText.text = $"{_potionNum}";
 
         if (_potionNum == 0)
         {
