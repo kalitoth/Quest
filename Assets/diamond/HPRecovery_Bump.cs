@@ -12,7 +12,7 @@ public class HPRecovery_Bump : MonoBehaviour
     {
         if(collision.gameObject.tag == _playerTag)
         {
-            Player player = collision.gameObject.GetComponent<Player>();
+            Player_master player = collision.gameObject.GetComponent<Player_master>();
              
             player.TakeHeal(_heal);
 

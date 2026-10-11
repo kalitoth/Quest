@@ -14,7 +14,7 @@ public class HPRecovery : MonoBehaviour
 
     Collider _playerCol;
 
-    int heal = 1;
+     
 
     private void Start()
     { 
